@@ -7,7 +7,7 @@ inputs:
     type: string
 
 outputs:
-  releasePath: ${{ runs.steps.invokeFile.outputs.releasePath }}
+  releasePath: ${{ invokeFile.outputs.releasePath }}
 
 runs:
   using: "composite"
