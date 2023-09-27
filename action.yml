@@ -1,0 +1,18 @@
+name: Haha
+
+inputs:
+  solutionPath:
+    description: The path to the solution
+    required: true
+    type: string
+
+runs:
+  steps:
+    - name: Write path as output
+      shell: powershell
+      run: Write-Output ${{inputs.solutionPath}}
+    - name: File invokation
+      shell: cmd
+      run: powershell -File "${{ github.action_path }}.\bin\haha.ps1"
+      env:
+        solutionPath: ${{inputs.solutionPath}}
