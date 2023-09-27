@@ -7,7 +7,7 @@ inputs:
     type: string
 
 outputs:
-  releasePath: ${{ invokeFile.outputs.releasePath }}
+  releasePath: "Haha"
 
 runs:
   using: "composite"
