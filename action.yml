@@ -6,8 +6,8 @@ inputs:
     required: true
     type: string
 
-outputs:
-  releasePath: ${{ steps.invokeFile.outputs.releasePath }}
+# outputs:
+#   releasePath: ${{ steps.invokeFile.outputs.releasePath }}
 
 runs:
   using: "composite"
