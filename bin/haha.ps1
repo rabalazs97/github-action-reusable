@@ -5,7 +5,7 @@ $parentDir = Split-Path -Path $env:solutionPath -Parent
 $csprojPattern = "*.xml"
 
 # Search for .csproj files in the script directory and its subdirectories
-$csprojFiles = Get-ChildItem -Path $parentDir -Filter $csprojPattern -File -Recurse -Exclude "*\.UnitTest"
+$csprojFiles = Get-ChildItem -Path $parentDir -Filter $csprojPattern -File -Recurse -Exclude "*.UnitTest"
 
 # Check if any .csproj files were found
 if ($csprojFiles.Count -gt 0) {
