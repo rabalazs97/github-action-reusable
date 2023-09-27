@@ -6,6 +6,9 @@ inputs:
     required: true
     type: string
 
+outputs:
+  releasePath: ${{ steps.invokeFile.outputs.releasePath }}
+
 runs:
   using: "composite"
   steps:
@@ -13,8 +16,10 @@ runs:
       shell: powershell
       run: Write-Output ${{inputs.solutionPath}}
     - name: File invokation
+      id: invokeFile
       shell: powershell
       run: |
-        ${{ github.action_path }}.\bin\haha.ps1
+        $releasePath = ${{ github.action_path }}.\bin\haha.ps1
+        Write-Output "::set-output name=releasePath::$releasePath"
       env:
         solutionPath: ${{inputs.solutionPath}}
