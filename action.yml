@@ -13,8 +13,8 @@ runs:
       shell: powershell
       run: Write-Output ${{inputs.solutionPath}}
     - name: File invokation
-      shell: cmd
+      shell: powershell
       run: |
-        .\bin\haha.ps1
+        ${{ github.action_path }}.\bin\haha.ps1
       env:
         solutionPath: ${{inputs.solutionPath}}
