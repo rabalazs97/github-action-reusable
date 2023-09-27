@@ -14,6 +14,7 @@ runs:
       run: Write-Output ${{inputs.solutionPath}}
     - name: File invokation
       shell: cmd
-      run: powershell -File "${{ github.action_path }}.\bin\haha.ps1"
+      run: |
+        .\bin\haha.ps1
       env:
         solutionPath: ${{inputs.solutionPath}}
