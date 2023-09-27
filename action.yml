@@ -7,7 +7,8 @@ inputs:
     type: string
 
 outputs:
-  releasePath: "Haha"
+  releasePath:
+    value: "Haha"
 
 runs:
   using: "composite"
