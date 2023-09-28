@@ -3,10 +3,11 @@ $parentDir = Split-Path -Path $env:solutionPath -Parent
 
 # Define the search pattern for .csproj files
 $csprojPattern = "*.xml"
+$unitTestString = "UnitTest"
 
 # Search for .csproj files in the script directory and its subdirectories
 $csprojFile = Get-ChildItem -Path $parentDir -Filter $csprojPattern -File -Recurse | 
-    Where-Object { -not $_.DirectoryName.EndsWith(".UnitTest") } | 
+    Where-Object { -not ($_.Name -like "*$unitTestString*" -or $_.DirectoryName -like ("*$unitTestString*"))  } | 
     Select-Object -First 1
 
 switch ($env:platform) {
