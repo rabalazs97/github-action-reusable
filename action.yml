@@ -5,6 +5,10 @@ inputs:
     description: The path to the solution
     required: true
     type: string
+  targetPlatform:
+    description: The platform the project should be built for (x64, x86, Win32)
+    required: false
+    type: string
 
 outputs:
   releasePath:
@@ -24,4 +28,5 @@ runs:
         Write-Output "::set-output name=releasePath::$releasePath"
         Write-Output "The output is: $releasePath"
       env:
-        solutionPath: ${{inputs.solutionPath}}
+        solutionPath: ${{ inputs.solutionPath }}
+        platform: ${{ inputs.targetPlatform }}

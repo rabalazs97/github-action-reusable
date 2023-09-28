@@ -5,7 +5,16 @@ $parentDir = Split-Path -Path $env:solutionPath -Parent
 $csprojPattern = "*.xml"
 
 # Search for .csproj files in the script directory and its subdirectories
-$csprojFile = Get-ChildItem -Path $parentDir -Filter $csprojPattern -File -Recurse | Where-Object { -not $_.DirectoryName.EndsWith(".UnitTest") } | Select-Object -First 1
+$csprojFile = Get-ChildItem -Path $parentDir -Filter $csprojPattern -File -Recurse | 
+    Where-Object { -not $_.DirectoryName.EndsWith(".UnitTest") } | 
+    Select-Object -First 1
+
+switch ($env:platform) {
+    'x64' { $env:platform = 'x64' }
+    'x86' { $env:platform = 'Win32' }
+    'Win32' { $env:platform = 'Win32' }
+    Default { $env:platform = 'AnyCpu' }
+}
 
 # Check if any .csproj files were found
 if ($csprojFile) {
@@ -16,6 +25,6 @@ if ($csprojFile) {
     $propertyGroups = $csprojXml.Project.PropertyGroup
 
     # Filter PropertyGroup elements by Condition containing "Release"
-    $releasePropertyGroups = $propertyGroups | Where-Object { $_.Condition -like "*Release*" }
+    $releasePropertyGroups = $propertyGroups | Where-Object { $_.Condition -like "*Release*" -and $_.Condition -like "*$env:platform*" }
     Write-Output $releasePropertyGroups.OutputPath
 }
