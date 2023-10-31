@@ -24,7 +24,8 @@ runs:
       id: invokeFile
       shell: powershell
       run: |
-        ${{ github.action_path }}.\bin\haha.ps1
+        $releasePath = ${{ github.action_path }}.\bin\haha.ps1
+        Write-Output "::set-output name=releasePath::$releasePath"
         Write-Output "The output is: $releasePath"
       env:
         solutionPath: ${{ inputs.solutionPath }}
