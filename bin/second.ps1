@@ -1,1 +1,1 @@
-Write-Host ${{ steps.invokeFile.outputs.releasePath }}
+Write-Host $env:steps.invokeFile.outputs.releasePath
