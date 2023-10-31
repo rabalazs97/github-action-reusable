@@ -25,7 +25,6 @@ runs:
       shell: powershell
       run: |
         $releasePath = ${{ github.action_path }}.\bin\haha.ps1
-        Write-Output releasePath=$releasePath >> $env:GITHUB_OUTPUT
         Write-Output "The output is: $releasePath"
       env:
         solutionPath: ${{ inputs.solutionPath }}
