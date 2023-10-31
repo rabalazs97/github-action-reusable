@@ -30,4 +30,4 @@ runs:
         platform: ${{ inputs.targetPlatform }}
     - name: Using output from previous script
       shell: powershell
-      run: ${{ github.action_path }}\bin\second.ps1
+      run: ${{ github.action_path }}\bin\second.ps1 "${{steps.invokeFile.outputs.releasePath}}"

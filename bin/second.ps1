@@ -1,1 +1,1 @@
-Write-Host $env:steps.invokeFile.outputs.releasePath
+Write-Host $args[0]
