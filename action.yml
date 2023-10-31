@@ -28,3 +28,6 @@ runs:
       env:
         solutionPath: ${{ inputs.solutionPath }}
         platform: ${{ inputs.targetPlatform }}
+    - name: Using output from previous script
+      shell: powershell
+      run: ${{ github.action_path }}\bin\second.ps1
