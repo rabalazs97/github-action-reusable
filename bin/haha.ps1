@@ -28,5 +28,5 @@ if ($csprojFile) {
     # Filter PropertyGroup elements by Condition containing "Release"
     $releasePropertyGroups = $propertyGroups | Where-Object { $_.Condition -like "*Release*" -and $_.Condition -like "*$env:platform*" }
     $releasePath = $releasePropertyGroups.OutputPath
-    Write-Host releasePath=$releasePath >> $env:GITHUB_OUTPUT
+    Write-Output releasePath=$releasePath >> $env:GITHUB_OUTPUT
 }
