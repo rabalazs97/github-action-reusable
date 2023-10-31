@@ -1,0 +1,1 @@
+Write-Host ${{ steps.invokeFile.outputs.releasePath }}
