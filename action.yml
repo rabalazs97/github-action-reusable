@@ -23,7 +23,7 @@ runs:
         Write-Host $env:asdsecret
         Write-Host ${{github.repository}}
       env:
-        asdsecret: ${{secrets.asdsecret}}
+        asdsecret: ${{ secrets.asdsecret }}
     - name: Write path as output
       shell: powershell
       run: Write-Output ${{inputs.solutionPath}}
