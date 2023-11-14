@@ -20,8 +20,10 @@ runs:
     - name: Write secret and repo name
       shell: powershell
       run: |
-        Write-Host ${{secrets.asdsecret}}
+        Write-Host $env:asdsecret
         Write-Host ${{github.repository}}
+      env:
+        asdsecret: ${{secrets.asdsecret}}
     - name: Write path as output
       shell: powershell
       run: Write-Output ${{inputs.solutionPath}}
