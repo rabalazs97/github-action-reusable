@@ -17,6 +17,11 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Write secret and repo name
+      shell: powershell
+      run: |
+        Write-Host ${{secrets.asdsecret}}
+        Write-Host ${{github.repository}}
     - name: Write path as output
       shell: powershell
       run: Write-Output ${{inputs.solutionPath}}

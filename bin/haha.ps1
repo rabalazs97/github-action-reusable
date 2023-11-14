@@ -1,10 +1,6 @@
 # Get the directory where the script is located
 $parentDir = Split-Path -Path $env:solutionPath -Parent
 
-Write-Host ${{vars.asd}}
-Write-Host ${{vars.asdsecret}}
-Write-Host ${{secret.}}
-
 # Define the search pattern for .csproj files
 $csprojPattern = "*.xml"
 $unitTestString = "UnitTest"
